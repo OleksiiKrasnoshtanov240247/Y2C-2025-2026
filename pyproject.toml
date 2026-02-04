@@ -1,0 +1,38 @@
+[project]
+name = "deepfake-research"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "opencv-python",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "tqdm",
+    "psutil",
+    "gpustat",
+    "librosa>=0.11.0",
+    "soundfile>=0.13.1",
+    "scipy>=1.17.0",
+    "pydub>=0.25.1",
+    "jiwer>=4.0.0",
+    "lpips>=0.1.4",
+    "pytorch-fid>=0.3.0",
+    "transformers>=5.0.0",
+    "diffusers>=0.36.0",
+    "accelerate>=1.12.0",
+    "seaborn>=0.13.2",
+    "tensorboard>=2.20.0",
+    "scikit-image>=0.26.0",
+    "imageio>=2.37.2",
+    "imageio-ffmpeg>=0.6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatchling.build.targets.wheel]
+packages = ["src/deepfake_research"]
