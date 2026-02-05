@@ -1,0 +1,5 @@
+# Individual Risk Log - Danil Sysenko
+
+| ID | Risk Description | Likelihood (1-5) | Impact (1-5) | Mitigation Strategy (Prevention) | Contingency Plan (Fallback) |
+|----|------------------|------------------|--------------|----------------------------------|-----------------------------|
+| **RISK-QA-01** | **Insufficient Statistical Power for MOS Survey.** <br> Risk of failing to recruit enough participants (N < 30) or receiving low-quality data, making pipeline comparisons statistically insignificant. | **3 (Medium)** | **4 (High)** | 1. Limit survey to 5 mins.<br>2. Run pilot with team in Week 3.<br>3. Prepare distribution lists (Discord, LinkedIn) in advance. | **Switch to Qualitative Analysis.**<br>Instead of mass statistics, conduct deep recorded interviews with 3-5 expert users to analyze artifacts qualitatively. |
