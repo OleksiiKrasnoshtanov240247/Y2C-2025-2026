@@ -70,13 +70,17 @@ def compute_secs(
     Uses SpeechBrain ECAPA-TDNN (speechbrain/spkrec-ecapa-voxceleb) as the
     standardised speaker encoder.
 
+    For voice conversion research, pass (converted_audio, target_reference)
+    to measure how closely the converted voice matches the target speaker.
+    The caller decides which audio pair to compare.
+
     Args:
-        original: Original audio signal (1-D numpy array).
-        transformed: Transformed audio signal (1-D numpy array).
+        original: First audio signal (1-D numpy array).
+        transformed: Second audio signal (1-D numpy array).
         sr: Sample rate (should be 16000).
 
     Returns:
-        Cosine similarity score in [-1, 1]. Higher is better.
+        Cosine similarity score in [-1, 1]. Higher = more similar.
     """
     import torch
     from speechbrain.inference.speaker import EncoderClassifier
