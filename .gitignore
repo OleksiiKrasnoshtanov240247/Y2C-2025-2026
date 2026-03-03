@@ -5,9 +5,6 @@ __pycache__/
 
 *.ckpt
 *.safetensors
-*.wav
-*.mp3
-*.ogg
 
 
 # C extensions
