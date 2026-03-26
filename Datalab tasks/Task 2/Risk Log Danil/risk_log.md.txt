@@ -3,32 +3,7 @@
 **Project:** Real-Time Audio-Visual Deepfake Pipeline | **Group O1 | BUas ADS&AI Y2C 2026**
 **Last updated:** Week 3
 
-<<<<<<< HEAD
-## Current Risk Register
 
-| ID | Risk Description | Likelihood (1-5) | Impact (1-5) | Mitigation Strategy (Prevention) | Contingency Plan (Fallback) |
-|:---|:-----------------|:-----------------|:-------------|:---------------------------------|:----------------------------|
-| **RISK-QA-01** | **Insufficient Statistical Power for MOS Survey.** <br> Risk of failing to recruit enough participants (N < 30) or receiving low-quality data, making pipeline comparisons statistically insignificant. | **3 (Medium)** | **4 (High)** | 1. Limit survey to 5 mins.<br>2. Run pilot with team in Week 3.<br>3. Prepare distribution lists (Discord, LinkedIn) in advance. | **Switch to Qualitative Analysis.**<br>Instead of mass statistics, conduct deep recorded interviews with 3-5 expert users to analyze artifacts qualitatively. |
-| **RISK-PM-02** | **Data Download Bottleneck (Sprint 1).** <br> Downloading the full VoxCeleb dataset (100GB+) takes significantly longer than expected, causing idle time for developers (Filipp/Alex) and blocking baseline testing. | **5 (Certain)** | **4 (High)** | **Adjust Trello Planning:**<br>Shifted priority to create a "Mini-Dataset" (20 videos) first to allow immediate development while full data downloads in background. | **Use Synthetic/Alternative Data.**<br>If VoxCeleb fails, temporarily use standard copyright-free stock footage for pipeline debugging. |
-| **RISK-DEV-03** | **Audio-Video Integration Mismatch.** <br> Risk that Audio team (Aron/Alex) and Video team (Maksym/Filipp) use different source files or sample rates, making the final Lip-Sync impossible to evaluate. | **4 (High)** | **5 (Critical)** | **Enforce Standardization:**<br>Created shared Trello cards requiring teams to sync on Source IDs and strict formats (25fps, 22kHz) before processing. | **Manual Synchronization.**<br>Manually align a single demo video in post-production (Premiere/DaVinci) for the final presentation if the automated pipeline breaks. |
-| **RISK-RES-04** | **Baseline Latency Too High.** <br> SOTA models (Wav2Lip) might be too heavy (>200ms) to ever reach "Real-Time" status even with quantization, failing the main research objective. | **3 (Medium)** | **5 (Critical)** | **Early Profiling:**<br>Task assigned to Aron to benchmark FPS/VRAM in Sprint 1. We will identify bottlenecks before building the full pipeline. | **Pivot Research Goal.**<br>Change definition of success from "Real-Time Streaming" to "High-Speed Batch Processing" (e.g., generating 1 min video in 10 secs). |
-
----
-
-## Risk Log Entries & Status Updates
-
-*This section tracks how risks are monitored and how planning is adjusted in Trello.*
-
-### [2026-02-17] Week 2 Update
-* **Active Issue (RISK-PM-02):** The full dataset download speed was too slow to finish before the scheduled coding session.
-* **Mitigation Action (Trello Adjustment):** As Scrum Master, I updated the Trello board. I moved the "Train on Full Dataset" task to the Backlog and added a new priority task: **"Prepare Mini-Sample (20 videos)"** to the Current Sprint. This allowed the team to start testing immediately.
-* **Status:** Mitigated. The team is currently working on the mini-set.
-
-### [2026-02-17] Week 2 Update
-* **Monitoring (RISK-QA-01):** To prevent low-quality data in the future user study, I designed the MOS methodology to include a "Trap Video" (Control) to filter out bots/inattentive users.
-* **Action:** Added "Design User Study Methodology" card to Trello and completed the protocol description.
-* **Status:** In Progress.
-=======
 > Likelihood and Impact scored 1–5 (1 = Very Low, 5 = Very High). Risk Priority = Likelihood × Impact. I review and update this log at the end of each sprint and adjust my planning accordingly.
 
 ---
@@ -75,4 +50,4 @@ These risks directly shape how I organise my sprints and set my priorities:
 | QA-05 | I added ethics application as a Priority 1 task in Week 4, blocking the survey launch until it's done |
 | QA-07 | I added "Record consent forms before filming" as a prerequisite task before any GT video recording |
 | QA-08 | I added a 1h/week statistics study slot to my sprint planning as a recurring task, starting Week 3 |
->>>>>>> e5d55d41c889b72e3592072e7336867b218cd56a
+

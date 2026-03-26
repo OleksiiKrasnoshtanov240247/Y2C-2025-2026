@@ -1,0 +1,45 @@
+{
+  "video": "video_metrics\\output_videos\\ad1a3342-c830-4330-983e-713a44dfc933.mp4",
+  "info": {
+    "fps": 25.0,
+    "frames": 260,
+    "width": 720,
+    "height": 1280,
+    "duration_s": 10.4
+  },
+  "metrics": {
+    "identity_arcface": {
+      "mean": 0.4186,
+      "std": 0.1333,
+      "p5": 0.2098,
+      "no_face_frames": 0,
+      "n_frames": 200,
+      "note": "Cosine similarity, range [-1, 1]. Higher = better identity preservation."
+    },
+    "landmark_nme": {
+      "mean_nme": 0.0827,
+      "p95_nme": 0.1802,
+      "no_face_frames": 1,
+      "n_frames": 199,
+      "note": "Lower NME = better expression/pose transfer. Normalised by inter-ocular distance."
+    },
+    "temporal_lpips": {
+      "mean": 0.0588,
+      "p95": 0.1851,
+      "n_pairs": 199,
+      "note": "Lower = more temporally stable. p95 captures worst flickering."
+    },
+    "fid": {
+      "fid": 197.093,
+      "n_real": 200,
+      "n_gen": 200,
+      "note": "Lower FID = more realistic. Computed on InceptionV3 pool3 face crop features."
+    },
+    "latency": {
+      "status": "not_measured",
+      "note": "Latency must be measured by instrumenting the generation model directly. See metric_latency() docstring for measurement instructions.",
+      "video_fps": 25.0,
+      "video_duration_s": 10.4
+    }
+  }
+}
