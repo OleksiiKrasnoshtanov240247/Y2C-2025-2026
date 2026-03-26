@@ -9,12 +9,15 @@ import soundfile as sf
 from pathlib import Path
 import json
 
+from audio_utils import _load_raw_audio
+
+
 def analyze_audio_file(path: str) -> dict:
     """Collect comprehensive audio metadata."""
-    
-    # Load raw audio without resampling
-    audio_raw, sr_original = sf.read(path)
-    
+
+    # Load raw audio without resampling (handles WAV, MP3, OGG, FLAC, etc.)
+    audio_raw, sr_original = _load_raw_audio(path)
+
     # Convert stereo to mono if needed
     if len(audio_raw.shape) > 1:
         audio_raw = np.mean(audio_raw, axis=1)

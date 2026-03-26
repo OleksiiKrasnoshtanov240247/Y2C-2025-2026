@@ -14,10 +14,35 @@ import soundfile as sf
 STANDARD_SR = 16_000  # 16 kHz standard for speech processing
 
 
+def _load_raw_audio(path: str) -> tuple[np.ndarray, int]:
+    """Load raw audio at its native sample rate, supporting all common formats.
+
+    Tries soundfile first (fast, lossless for WAV/FLAC/OGG), then falls back
+    to librosa which uses audioread/ffmpeg for formats like MP3.
+
+    Returns:
+        Tuple of (audio_signal_float32, original_sample_rate).
+    """
+    try:
+        audio, sr = sf.read(path)
+    except Exception:
+        # soundfile can't read this format (e.g. MP3 on older libsndfile).
+        # Fall back to librosa which delegates to audioread/ffmpeg.
+        audio, sr = librosa.load(path, sr=None, mono=False)
+        # librosa.load with mono=False returns (channels, samples) for stereo
+        if audio.ndim == 2:
+            audio = audio.T  # -> (samples, channels) to match sf.read layout
+
+    # Ensure float32 (librosa returns float32, sf.read may return float64)
+    audio = audio.astype(np.float32, copy=False)
+    return audio, sr
+
+
 def load_audio(path: str, sr: int = STANDARD_SR) -> tuple[np.ndarray, int]:
     """Load audio file and resample to the standard sample rate.
 
-    Supports WAV and MP3 formats. Converts to mono if stereo.
+    Supports WAV, MP3, OGG, FLAC, and any format readable by ffmpeg.
+    Converts to mono if stereo.
 
     Returns:
         Tuple of (audio_signal, sample_rate).
@@ -28,18 +53,20 @@ def load_audio(path: str, sr: int = STANDARD_SR) -> tuple[np.ndarray, int]:
 
 def prepare_audio_for_metrics(path: str) -> tuple[np.ndarray, int, dict]:
     """Load and preprocess audio with intelligent handling.
-    
+
     Unlike basic load_audio(), this function:
     - Analyzes original audio metadata
     - Applies level normalization if needed
     - Chooses optimal resampling strategy based on source quality
     - Preserves as much quality as possible
-    
+
+    Supports WAV, MP3, OGG, FLAC, and any format readable by ffmpeg.
+
     Returns:
         Tuple of (processed_audio, sample_rate, metadata_dict)
     """
-    # Load raw audio to analyze
-    audio_raw, sr_original = sf.read(path)
+    # Load raw audio at native sample rate (handles all formats)
+    audio_raw, sr_original = _load_raw_audio(path)
     
     # Convert stereo to mono if needed
     if len(audio_raw.shape) > 1:
