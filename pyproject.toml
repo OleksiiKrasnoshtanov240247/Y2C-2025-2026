@@ -1,7 +1,7 @@
 [project]
 name = "deepfake-research"
 version = "0.1.0"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "torch",
     "torchvision",
@@ -20,7 +20,8 @@ dependencies = [
     "jiwer",
     "lpips",
     "pytorch-fid",
-    "transformers",
+    "transformers>=4.45.0",
+    "tokenizers>=0.20.0",
     "diffusers",
     "accelerate",
     "seaborn",
@@ -28,14 +29,21 @@ dependencies = [
     "scikit-image",
     "imageio",
     "imageio-ffmpeg",
-    "transformers>=4.45.0",
-    "tokenizers>=0.20.0",
     "speechbrain>=1.0.0",
     "faster-whisper",
     "pystoi",
     "dtw-python",
     "pesq>=0.0.4",
     "pyloudnorm>=0.2.0",
+    "insightface",
+    "onnx==1.16.1",
+    # NOTE: use onnxruntime-gpu if CUDA is available, otherwise switch to onnxruntime==1.19.0
+    # To switch: uv pip uninstall onnxruntime-gpu && uv pip install onnxruntime==1.19.0
+    "onnxruntime-gpu==1.19.0",
+    "ml-dtypes==0.4.0",
+    "mediapipe",
+    "pingouin",
+    "scikit-learn",
 ]
 
 [build-system]
