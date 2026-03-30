@@ -226,6 +226,7 @@ __marimo__/
 *.zip
 *.png
 *.safetensors
+*.mp4
 
 assets/audios
 assets/datasets

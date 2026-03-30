@@ -19,6 +19,43 @@ warnings.filterwarnings("ignore")
 # To switch to CPU-only: replace onnxruntime-gpu with onnxruntime in pyproject.toml
 #   uv pip uninstall onnxruntime-gpu && uv pip install onnxruntime==1.19.0
 
+# Try to forcefully attach PyTorch's native CUDA DLL injections before ONNX Runtime loads
+try:
+    import site
+    import sys
+    import os
+    from pathlib import Path
+    import importlib.util
+    
+    torch_spec = importlib.util.find_spec("torch")
+    if torch_spec is not None and torch_spec.origin is not None:
+        HAS_TORCH = True
+        # Path logic: origin = site-packages/torch/__init__.py -> parent = torch -> parent = site-packages
+        site_packages = Path(torch_spec.origin).parent.parent
+        new_path = os.environ.get("PATH", "")
+        for nv_dir in ["cublas", "cudnn", "cuda_runtime", "cufft", "cusparse", "cusolver", "curand", "nvtx"]:
+            nv_bin = site_packages / "nvidia" / nv_dir / "bin"
+            if nv_bin.exists():
+                new_path = str(nv_bin) + os.pathsep + new_path
+                if hasattr(os, "add_dll_directory"):
+                    os.add_dll_directory(str(nv_bin))
+                    
+        torch_lib = site_packages / "torch" / "lib"
+        if torch_lib.exists():
+            new_path = str(torch_lib) + os.pathsep + new_path
+            if hasattr(os, "add_dll_directory"):
+                os.add_dll_directory(str(torch_lib))
+                
+        os.environ["PATH"] = new_path
+        DEVICE = "cuda"
+    else:
+        HAS_TORCH = False
+        DEVICE = "cpu"
+
+except Exception:
+    HAS_TORCH = False
+    DEVICE = "cpu"
+
 def _get_onnx_providers():
     try:
         import onnxruntime as _ort
@@ -51,15 +88,11 @@ except ImportError:
     HAS_MEDIAPIPE = False
 
 try:
-    import torch
     import lpips as _lpips
     from torchvision import transforms as _T, models as _models
     from scipy.linalg import sqrtm as _sqrtm
-    HAS_TORCH = True
-    DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 except ImportError:
-    HAS_TORCH = False
-    DEVICE = "cpu"
+    pass
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────

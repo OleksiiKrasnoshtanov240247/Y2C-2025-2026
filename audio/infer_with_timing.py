@@ -74,6 +74,12 @@ def infer_with_timing(
     import torch
     from rvc.infer.infer import VoiceConverter
     from rvc.lib.utils import load_audio_infer
+    
+    # Resolve absolute paths BEFORE any working directory changes
+    source_path = os.path.abspath(source_path)
+    output_path = os.path.abspath(output_path)
+    model_path = os.path.abspath(model_path)
+    index_path = os.path.abspath(index_path)
 
     # Compute chunk sizes
     block_frame_48k = read_chunk_size * 128              # samples at 48kHz
