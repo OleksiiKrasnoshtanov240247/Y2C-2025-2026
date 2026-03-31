@@ -228,6 +228,8 @@ __marimo__/
 *.safetensors
 *.mp4
 
+Datalab tasks/checkpoints/
+
 assets/audios
 assets/datasets
 logs
@@ -241,3 +243,10 @@ env/
 venv/
 .venv/src/data/raw/*.rar
 src/data/
+*.rar
+*.zip
+*.tar.gz
+*.ckpt
+*.safetensors
+*.onnx
+*.csv
