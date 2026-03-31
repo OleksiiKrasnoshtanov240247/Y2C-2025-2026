@@ -3,7 +3,7 @@ name = "pipeline"
 version = "0.1.0"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    "torch",
+    "torch>=2.4.0",
     "torchvision",
     "torchaudio",
     "opencv-python",
@@ -17,6 +17,7 @@ dependencies = [
     "soundfile",
     "scipy",
     "pydub",
+    "pyyaml",              # MuseTalk inference config — 3_generate_video.py
     "jiwer",
     "lpips",
     "pytorch-fid",
@@ -25,11 +26,7 @@ dependencies = [
     "diffusers>=0.30.2",
     "mmpose",
     "mmengine",
-    # mmcv (full, with CUDA ops) has no Windows wheels at all.
-    # mmcv-lite is the pure-Python variant that installs fine on Windows.
-    # For mmpose inference this is sufficient; only exotic ops like
-    # deformable convolution require the full build.
-    "mmcv-lite<2.2.0",
+    "mmcv-lite>=2.1.0",    # Pure-python build; MuseTalk workers need mmcv==2.1.0 --no-build-isolation (see setup_workers.py)
     "mmdet",
     "accelerate",
     "seaborn",
@@ -48,7 +45,6 @@ dependencies = [
     "onnxruntime-gpu==1.20.1",
     "nvidia-cublas-cu12",
     "nvidia-cudnn-cu12",
-    "nvidia-cufft-cu12",
     "ml-dtypes==0.4.0",
     "mediapipe==0.10.14",
     "pingouin",
@@ -68,8 +64,8 @@ dependencies = [
     "cv2_enumerate_cameras",
     "opennsfw2",
     "protobuf",
-    "pygrabber",
     "customtkinter",
+    # "pygrabber" — REMOVED: Windows DirectShow wrapper, not installable on Linux
 ]
 
 [build-system]
@@ -82,20 +78,21 @@ packages = ["src/pipeline"]
 [tool.hatch.metadata]
 allow-direct-references = true
 
+# CUDA 12.4 PyTorch wheels — RTX 6000 Ada / L40S compatible
 [[tool.uv.index]]
-name = "pytorch-cu126"
-url = "https://download.pytorch.org/whl/nightly/cu126"
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
 explicit = true
 
 [tool.uv.sources]
-torch = { index = "pytorch-cu126" }
-torchvision = { index = "pytorch-cu126" }
-torchaudio = { index = "pytorch-cu126" }
+torch      = { index = "pytorch-cu124" }
+torchvision = { index = "pytorch-cu124" }
+torchaudio  = { index = "pytorch-cu124" }
 
 [tool.uv.extra-build-dependencies]
-chumpy = ["pip"]
+chumpy      = ["pip"]
 xtcocotools = ["numpy"]
 
 [tool.uv]
 prerelease = "allow"
-environments = ["sys_platform == 'win32'"]
+required-environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]

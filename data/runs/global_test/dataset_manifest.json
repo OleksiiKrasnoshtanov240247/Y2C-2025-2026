@@ -1,0 +1,67 @@
+{
+    "dataset_name": "FakeAVCeleb_Subset",
+    "seed": 42,
+    "videos": {
+        "video_id00944_00135": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/African/men/id00944/00135.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id00944_00135.wav",
+            "race": "African",
+            "gender": "men"
+        },
+        "video_id01783_00015": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/African/women/id01783/00015.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id01783_00015.wav",
+            "race": "African",
+            "gender": "women"
+        },
+        "video_id02493_00073": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Asian (East)/men/id02493/00073.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id02493_00073.wav",
+            "race": "Asian (East)",
+            "gender": "men"
+        },
+        "video_id03379_00032": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Asian (East)/women/id03379/00032.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id03379_00032.wav",
+            "race": "Asian (East)",
+            "gender": "women"
+        },
+        "video_id00816_00118": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Asian (South)/men/id00816/00118.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id00816_00118.wav",
+            "race": "Asian (South)",
+            "gender": "men"
+        },
+        "video_id03559_00023": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Asian (South)/women/id03559/00023.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id03559_00023.wav",
+            "race": "Asian (South)",
+            "gender": "women"
+        },
+        "video_id00243_00037": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Caucasian (American)/men/id00243/00037.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id00243_00037.wav",
+            "race": "Caucasian (American)",
+            "gender": "men"
+        },
+        "video_id00385_00439": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Caucasian (American)/women/id00385/00439.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id00385_00439.wav",
+            "race": "Caucasian (American)",
+            "gender": "women"
+        },
+        "video_id00282_00268": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Caucasian (European)/men/id00282/00268.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id00282_00268.wav",
+            "race": "Caucasian (European)",
+            "gender": "men"
+        },
+        "video_id00332_00293": {
+            "source_video": "/home/y2a/Y2C-2025-2026/src/data/raw/RealVideo-RealAudio/Caucasian (European)/women/id00332/00293.mp4",
+            "source_audio": "/home/y2a/Y2C-2025-2026/data/runs/global_test/processed_audio/video_id00332_00293.wav",
+            "race": "Caucasian (European)",
+            "gender": "women"
+        }
+    },
+    "sampled_size": 10
+}

@@ -15,7 +15,8 @@ print("  Verifying Micro-Environment GPU Compatibilities")
 print("="*60)
 
 for worker in WORKERS:
-    venv_python = Path(worker["dir"]).absolute() / ".venv" / "Scripts" / "python.exe"
+    # LINUX: .venv/bin/python
+    venv_python = Path(worker["dir"]).absolute() / ".venv" / "bin" / "python"
     
     if not venv_python.exists():
         print(f"[ERROR] Engine missing: {worker['name']} ({venv_python} not found)")
@@ -24,11 +25,9 @@ for worker in WORKERS:
     print(f"\nProbing {worker['name']}...")
     
     if worker["name"] in ["facefusion", "Deep-Live-Cam"]:
-        # They use ONNX Runtime natively
         probe_code = "import onnxruntime; print('ONNX Providers:', onnxruntime.get_available_providers())"
         cmd = [str(venv_python), "-c", probe_code]
     else:
-        # Pytorch logic
         probe_code = "import torch; print(f'CUDA Connected: {torch.cuda.is_available()} | Version: {torch.version.cuda} | Device: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else None}')"
         cmd = [str(venv_python), "-c", probe_code]
         

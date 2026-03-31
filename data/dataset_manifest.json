@@ -1,19 +1,6 @@
 {
     "dataset_name": "FakeAVCeleb_Subset",
-    "sampled_size": 2,
     "seed": 42,
-    "videos": {
-        "video_id00328_00092": {
-            "source_video": "C:\\Users\\alesh\\Documents\\GitHub\\Y2C-2025-2026\\src\\data\\raw\\RealVideo-RealAudio\\Caucasian (European)\\women\\id00328\\00092.mp4",
-            "source_audio": "C:\\Users\\alesh\\Documents\\GitHub\\Y2C-2025-2026\\data\\processed_audio\\video_id00328_00092.wav",
-            "race": "Caucasian (European)",
-            "gender": "women"
-        },
-        "video_id02824_00130": {
-            "source_video": "C:\\Users\\alesh\\Documents\\GitHub\\Y2C-2025-2026\\src\\data\\raw\\RealVideo-RealAudio\\African\\women\\id02824\\00130.mp4",
-            "source_audio": "C:\\Users\\alesh\\Documents\\GitHub\\Y2C-2025-2026\\data\\processed_audio\\video_id02824_00130.wav",
-            "race": "African",
-            "gender": "women"
-        }
-    }
+    "videos": {},
+    "sampled_size": 0
 }

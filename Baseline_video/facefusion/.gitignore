@@ -1,10 +1,7 @@
-.assets/
-.venv_facefusion/
-.venv_ff/
-output/
-report/
-__pycache__/
-*.pyc
-*.pyo
-.DS_Store
-.jobs/
+__pycache__
+.assets
+.claude
+.caches
+.idea
+.jobs
+.vscode
