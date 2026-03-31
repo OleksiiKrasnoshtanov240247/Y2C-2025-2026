@@ -239,4 +239,5 @@ venv
 audio/Applio/logs/DonaldTrump
 env/
 venv/
-.venv/
+.venv/src/data/raw/*.rar
+src/data/
