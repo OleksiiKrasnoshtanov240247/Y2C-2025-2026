@@ -6,10 +6,21 @@ ComponentName = Literal\
 	'age_modifier_direction_slider',
 	'age_modifier_model_dropdown',
 	'background_remover_model_dropdown',
+<<<<<<< HEAD
 	'background_remover_color_red_number',
 	'background_remover_color_green_number',
 	'background_remover_color_blue_number',
 	'background_remover_color_alpha_number',
+=======
+	'background_remover_fill_color_red_number',
+	'background_remover_fill_color_green_number',
+	'background_remover_fill_color_blue_number',
+	'background_remover_fill_color_alpha_number',
+	'background_remover_despill_color_red_number',
+	'background_remover_despill_color_green_number',
+	'background_remover_despill_color_blue_number',
+	'background_remover_despill_color_alpha_number',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	'deep_swapper_model_dropdown',
 	'deep_swapper_morph_slider',
 	'expression_restorer_factor_slider',

@@ -1,5 +1,6 @@
 {
     "dataset_name": "FakeAVCeleb_Subset",
+<<<<<<< HEAD
     "sampled_size": 2,
     "seed": 42,
     "videos": {
@@ -16,4 +17,9 @@
             "gender": "women"
         }
     }
+=======
+    "seed": 42,
+    "videos": {},
+    "sampled_size": 0
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 }

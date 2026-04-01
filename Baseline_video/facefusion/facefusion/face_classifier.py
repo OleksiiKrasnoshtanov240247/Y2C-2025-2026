@@ -20,7 +20,11 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 			'__metadata__':
 			{
 				'vendor': 'dchen236',
+<<<<<<< HEAD
 				'license': 'Non-Commercial',
+=======
+				'license': 'CC-BY-4.0',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 				'year': 2021
 			},
 			'hashes':

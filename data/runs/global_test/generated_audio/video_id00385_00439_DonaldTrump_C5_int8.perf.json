@@ -1,0 +1,23 @@
+{
+  "num_chunks": 5,
+  "precision": "int8",
+  "device": "cpu",
+  "chunk_latencies_ms": [
+    2744.73,
+    2746.21,
+    2781.213,
+    2468.384,
+    2517.745
+  ],
+  "mean_chunk_latency_ms": 2651.656,
+  "min_chunk_latency_ms": 2468.384,
+  "max_chunk_latency_ms": 2781.213,
+  "std_chunk_latency_ms": 131.079,
+  "total_latency_ms": 13258.282,
+  "peak_gpu_memory_mb": null,
+  "block_frame_samples": 98304,
+  "block_frame_ms": 2048.0,
+  "source_file": "video_id00385_00439.wav",
+  "target_speaker": "DonaldTrump",
+  "read_chunk_size": 768
+}

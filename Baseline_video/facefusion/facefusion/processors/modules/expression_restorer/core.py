@@ -192,12 +192,21 @@ def restrict_expression_areas(temp_expression : LivePortraitExpression, target_e
 	expression_restorer_areas = state_manager.get_item('expression_restorer_areas')
 
 	if 'upper-face' not in expression_restorer_areas:
+<<<<<<< HEAD
 		target_expression[:, [1, 2, 6, 10, 11, 12, 13, 15, 16]] = temp_expression[:, [1, 2, 6, 10, 11, 12, 13, 15, 16]]
 
 	if 'lower-face' not in expression_restorer_areas:
 		target_expression[:, [3, 7, 14, 17, 18, 19, 20]] = temp_expression[:, [3, 7, 14, 17, 18, 19, 20]]
 
 	target_expression[:, [0, 4, 5, 8, 9]] = temp_expression[:, [0, 4, 5, 8, 9]]
+=======
+		target_expression[:, [ 1, 2, 6, 10, 11, 12, 13, 15, 16 ]] = temp_expression[:, [ 1, 2, 6, 10, 11, 12, 13, 15, 16 ]]
+
+	if 'lower-face' not in expression_restorer_areas:
+		target_expression[:, [ 3, 7, 14, 17, 18, 19, 20 ]] = temp_expression[:, [ 3, 7, 14, 17, 18, 19, 20 ]]
+
+	target_expression[:, [ 0, 4, 5, 8, 9 ]] = temp_expression[:, [ 0, 4, 5, 8, 9 ]]
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	return target_expression
 
 

@@ -1,5 +1,9 @@
 import logging
+<<<<<<< HEAD
 from typing import List, Sequence
+=======
+from typing import List, Sequence, get_args
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 from facefusion.common_helper import create_float_range, create_int_range
 from facefusion.types import Angle, AudioEncoder, AudioFormat, AudioTypeSet, BenchmarkMode, BenchmarkResolution, BenchmarkSet, DownloadProvider, DownloadProviderSet, DownloadScope, EncoderSet, ExecutionProvider, ExecutionProviderSet, FaceDetectorModel, FaceDetectorSet, FaceLandmarkerModel, FaceMaskArea, FaceMaskAreaSet, FaceMaskRegion, FaceMaskRegionSet, FaceMaskType, FaceOccluderModel, FaceParserModel, FaceSelectorMode, FaceSelectorOrder, Gender, ImageFormat, ImageTypeSet, JobStatus, LogLevel, LogLevelSet, Race, Score, TempFrameFormat, UiWorkflow, VideoEncoder, VideoFormat, VideoMemoryStrategy, VideoPreset, VideoTypeSet, VoiceExtractorModel
@@ -12,6 +16,7 @@ face_detector_set : FaceDetectorSet =\
 	'yolo_face': [ '640x640' ],
 	'yunet': [ '640x640' ]
 }
+<<<<<<< HEAD
 face_detector_models : List[FaceDetectorModel] = list(face_detector_set.keys())
 face_landmarker_models : List[FaceLandmarkerModel] = [ 'many', '2dfan4', 'peppa_wutz' ]
 face_selector_modes : List[FaceSelectorMode] = [ 'many', 'one', 'reference' ]
@@ -21,6 +26,17 @@ face_selector_races : List[Race] = [ 'white', 'black', 'latino', 'asian', 'india
 face_occluder_models : List[FaceOccluderModel] = [ 'many', 'xseg_1', 'xseg_2', 'xseg_3' ]
 face_parser_models : List[FaceParserModel] = [ 'bisenet_resnet_18', 'bisenet_resnet_34' ]
 face_mask_types : List[FaceMaskType] = [ 'box', 'occlusion', 'area', 'region' ]
+=======
+face_detector_models : List[FaceDetectorModel] = list(get_args(FaceDetectorModel))
+face_landmarker_models : List[FaceLandmarkerModel] = list(get_args(FaceLandmarkerModel))
+face_selector_modes : List[FaceSelectorMode] = list(get_args(FaceSelectorMode))
+face_selector_orders : List[FaceSelectorOrder] = list(get_args(FaceSelectorOrder))
+face_selector_genders : List[Gender] = list(get_args(Gender))
+face_selector_races : List[Race] = list(get_args(Race))
+face_occluder_models : List[FaceOccluderModel] = list(get_args(FaceOccluderModel))
+face_parser_models : List[FaceParserModel] = list(get_args(FaceParserModel))
+face_mask_types : List[FaceMaskType] = list(get_args(FaceMaskType))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 face_mask_area_set : FaceMaskAreaSet =\
 {
 	'upper-face': [ 0, 1, 2, 31, 32, 33, 34, 35, 14, 15, 16, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17 ],
@@ -40,10 +56,17 @@ face_mask_region_set : FaceMaskRegionSet =\
 	'upper-lip': 12,
 	'lower-lip': 13
 }
+<<<<<<< HEAD
 face_mask_areas : List[FaceMaskArea] = list(face_mask_area_set.keys())
 face_mask_regions : List[FaceMaskRegion] = list(face_mask_region_set.keys())
 
 voice_extractor_models : List[VoiceExtractorModel] = [ 'kim_vocal_1', 'kim_vocal_2', 'uvr_mdxnet' ]
+=======
+face_mask_areas : List[FaceMaskArea] = list(get_args(FaceMaskArea))
+face_mask_regions : List[FaceMaskRegion] = list(get_args(FaceMaskRegion))
+
+voice_extractor_models : List[VoiceExtractorModel] = list(get_args(VoiceExtractorModel))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 audio_type_set : AudioTypeSet =\
 {
@@ -74,6 +97,7 @@ video_type_set : VideoTypeSet =\
 	'webm': 'video/webm',
 	'wmv': 'video/x-ms-wmv'
 }
+<<<<<<< HEAD
 audio_formats : List[AudioFormat] = list(audio_type_set.keys())
 image_formats : List[ImageFormat] = list(image_type_set.keys())
 video_formats : List[VideoFormat] = list(video_type_set.keys())
@@ -89,6 +113,23 @@ output_video_encoders : List[VideoEncoder] = output_encoder_set.get('video')
 output_video_presets : List[VideoPreset] = [ 'ultrafast', 'superfast', 'veryfast', 'faster', 'fast', 'medium', 'slow', 'slower', 'veryslow' ]
 
 benchmark_modes : List[BenchmarkMode] = [ 'warm', 'cold' ]
+=======
+audio_formats : List[AudioFormat] = list(get_args(AudioFormat))
+image_formats : List[ImageFormat] = list(get_args(ImageFormat))
+video_formats : List[VideoFormat] = list(get_args(VideoFormat))
+temp_frame_formats : List[TempFrameFormat] = list(get_args(TempFrameFormat))
+
+output_audio_encoders : List[AudioEncoder] = list(get_args(AudioEncoder))
+output_video_encoders : List[VideoEncoder] = list(get_args(VideoEncoder))
+output_encoder_set : EncoderSet =\
+{
+	'audio': output_audio_encoders,
+	'video': output_video_encoders
+}
+output_video_presets : List[VideoPreset] = list(get_args(VideoPreset))
+
+benchmark_modes : List[BenchmarkMode] = list(get_args(BenchmarkMode))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 benchmark_set : BenchmarkSet =\
 {
 	'240p': '.assets/examples/target-240p.mp4',
@@ -99,12 +140,17 @@ benchmark_set : BenchmarkSet =\
 	'1440p': '.assets/examples/target-1440p.mp4',
 	'2160p': '.assets/examples/target-2160p.mp4'
 }
+<<<<<<< HEAD
 benchmark_resolutions : List[BenchmarkResolution] = list(benchmark_set.keys())
+=======
+benchmark_resolutions : List[BenchmarkResolution] = list(get_args(BenchmarkResolution))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 execution_provider_set : ExecutionProviderSet =\
 {
 	'cuda': 'CUDAExecutionProvider',
 	'tensorrt': 'TensorrtExecutionProvider',
+<<<<<<< HEAD
 	'directml': 'DmlExecutionProvider',
 	'rocm': 'ROCMExecutionProvider',
 	'migraphx': 'MIGraphXExecutionProvider',
@@ -113,6 +159,17 @@ execution_provider_set : ExecutionProviderSet =\
 	'cpu': 'CPUExecutionProvider'
 }
 execution_providers : List[ExecutionProvider] = list(execution_provider_set.keys())
+=======
+	'rocm': 'ROCMExecutionProvider',
+	'migraphx': 'MIGraphXExecutionProvider',
+	'coreml': 'CoreMLExecutionProvider',
+	'openvino': 'OpenVINOExecutionProvider',
+	'qnn': 'QNNExecutionProvider',
+	'directml': 'DmlExecutionProvider',
+	'cpu': 'CPUExecutionProvider'
+}
+execution_providers : List[ExecutionProvider] = list(get_args(ExecutionProvider))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 download_provider_set : DownloadProviderSet =\
 {
 	'github':
@@ -133,10 +190,17 @@ download_provider_set : DownloadProviderSet =\
 		'path': '/facefusion/{base_name}/resolve/main/{file_name}'
 	}
 }
+<<<<<<< HEAD
 download_providers : List[DownloadProvider] = list(download_provider_set.keys())
 download_scopes : List[DownloadScope] = [ 'lite', 'full' ]
 
 video_memory_strategies : List[VideoMemoryStrategy] = [ 'strict', 'moderate', 'tolerant' ]
+=======
+download_providers : List[DownloadProvider] = list(get_args(DownloadProvider))
+download_scopes : List[DownloadScope] = list(get_args(DownloadScope))
+
+video_memory_strategies : List[VideoMemoryStrategy] = list(get_args(VideoMemoryStrategy))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 log_level_set : LogLevelSet =\
 {
@@ -145,10 +209,17 @@ log_level_set : LogLevelSet =\
 	'info': logging.INFO,
 	'debug': logging.DEBUG
 }
+<<<<<<< HEAD
 log_levels : List[LogLevel] = list(log_level_set.keys())
 
 ui_workflows : List[UiWorkflow] = [ 'instant_runner', 'job_runner', 'job_manager' ]
 job_statuses : List[JobStatus] = [ 'drafted', 'queued', 'completed', 'failed' ]
+=======
+log_levels : List[LogLevel] = list(get_args(LogLevel))
+
+ui_workflows : List[UiWorkflow] = list(get_args(UiWorkflow))
+job_statuses : List[JobStatus] = list(get_args(JobStatus))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 benchmark_cycle_count_range : Sequence[int] = create_int_range(1, 10, 1)
 execution_thread_count_range : Sequence[int] = create_int_range(1, 32, 1)

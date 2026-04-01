@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 vid_id,target_speaker,chunk_condition,precision,architecture,identity_arcface_mean,landmark_nme_mean,temporal_lpips_mean,fid_score,latency_p95_ms
 video_id00328_00092,DonaldTrump,C3,fp32,Deep-Live-Cam,0.7552,,0.0619,115.617,
 video_id00328_00092,DonaldTrump,C3,fp32,Wav2Lip,0.0628,,0.041,14.497,
@@ -22,3 +23,6 @@ video_id00328_00092,DonaldTrump,C3,fp32,Wav2Lip,0.0644,0.01338,0.0476,13.785,
 video_id02824_00130,DonaldTrump,C3,fp32,Deep-Live-Cam,0.8476,0.04487,0.09,86.885,
 video_id02824_00130,DonaldTrump,C3,fp32,FaceFusion,0.7086,0.04941,0.1086,84.054,
 video_id02824_00130,DonaldTrump,C3,fp32,Wav2Lip,,0.0128,0.0367,13.055,
+=======
+vid_id,target_speaker,chunk_condition,precision,architecture,identity_arcface_mean,landmark_nme_mean,temporal_lpips_mean,fid_score,latency_p95_ms
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a

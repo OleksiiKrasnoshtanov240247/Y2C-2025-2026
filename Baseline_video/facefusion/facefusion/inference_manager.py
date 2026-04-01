@@ -8,7 +8,11 @@ from onnxruntime import InferenceSession
 from facefusion import logger, process_manager, state_manager, translator
 from facefusion.app_context import detect_app_context
 from facefusion.common_helper import is_windows
+<<<<<<< HEAD
 from facefusion.execution import create_inference_session_providers, has_execution_provider
+=======
+from facefusion.execution import create_inference_providers, has_execution_provider
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 from facefusion.exit_helper import fatal_exit
 from facefusion.filesystem import get_file_name, is_file
 from facefusion.time_helper import calculate_end_time
@@ -72,8 +76,13 @@ def create_inference_session(model_path : str, execution_device_id : int, execut
 	start_time = time()
 
 	try:
+<<<<<<< HEAD
 		inference_session_providers = create_inference_session_providers(execution_device_id, execution_providers)
 		inference_session = InferenceSession(model_path, providers = inference_session_providers)
+=======
+		inference_providers = create_inference_providers(execution_device_id, execution_providers)
+		inference_session = InferenceSession(model_path, providers = inference_providers)
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 		logger.debug(translator.get('loading_model_succeeded').format(model_name = model_file_name, seconds = calculate_end_time(start_time)), __name__)
 		return inference_session
 

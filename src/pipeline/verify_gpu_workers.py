@@ -15,7 +15,12 @@ print("  Verifying Micro-Environment GPU Compatibilities")
 print("="*60)
 
 for worker in WORKERS:
+<<<<<<< HEAD
     venv_python = Path(worker["dir"]).absolute() / ".venv" / "Scripts" / "python.exe"
+=======
+    # LINUX: .venv/bin/python
+    venv_python = Path(worker["dir"]).absolute() / ".venv" / "bin" / "python"
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     
     if not venv_python.exists():
         print(f"[ERROR] Engine missing: {worker['name']} ({venv_python} not found)")
@@ -24,11 +29,17 @@ for worker in WORKERS:
     print(f"\nProbing {worker['name']}...")
     
     if worker["name"] in ["facefusion", "Deep-Live-Cam"]:
+<<<<<<< HEAD
         # They use ONNX Runtime natively
         probe_code = "import onnxruntime; print('ONNX Providers:', onnxruntime.get_available_providers())"
         cmd = [str(venv_python), "-c", probe_code]
     else:
         # Pytorch logic
+=======
+        probe_code = "import onnxruntime; print('ONNX Providers:', onnxruntime.get_available_providers())"
+        cmd = [str(venv_python), "-c", probe_code]
+    else:
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
         probe_code = "import torch; print(f'CUDA Connected: {torch.cuda.is_available()} | Version: {torch.version.cuda} | Device: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else None}')"
         cmd = [str(venv_python), "-c", probe_code]
         
@@ -40,4 +51,8 @@ for worker in WORKERS:
     except Exception as e:
         print(f"  [FAIL] System Error: {e}")
 
+<<<<<<< HEAD
 print("\nVerification sequence finished.")
+=======
+print("\nVerification sequence finished.")
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a

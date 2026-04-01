@@ -5,6 +5,10 @@ import pytest
 from facefusion import face_classifier, face_detector, face_landmarker, face_recognizer, state_manager
 from facefusion.download import conditional_download
 from facefusion.face_analyser import get_many_faces
+<<<<<<< HEAD
+=======
+from facefusion.face_store import clear_static_faces
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 from facefusion.vision import read_static_image
 from .helper import get_test_example_file, get_test_examples_directory
 
@@ -37,6 +41,10 @@ def before_each() -> None:
 	face_detector.clear_inference_pool()
 	face_landmarker.clear_inference_pool()
 	face_recognizer.clear_inference_pool()
+<<<<<<< HEAD
+=======
+	clear_static_faces()
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 def test_get_one_face_with_retinaface() -> None:
@@ -62,7 +70,11 @@ def test_get_one_face_with_retinaface() -> None:
 
 def test_get_one_face_with_scrfd() -> None:
 	state_manager.init_item('face_detector_model', 'scrfd')
+<<<<<<< HEAD
 	state_manager.init_item('face_detector_size', '640x640')
+=======
+	state_manager.init_item('face_detector_size', '320x320')
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	state_manager.init_item('face_detector_margin', (0, 0, 0, 0))
 	face_detector.pre_check()
 
@@ -82,7 +94,11 @@ def test_get_one_face_with_scrfd() -> None:
 
 
 def test_get_one_face_with_yoloface() -> None:
+<<<<<<< HEAD
 	state_manager.init_item('face_detector_model', 'yoloface')
+=======
+	state_manager.init_item('face_detector_model', 'yolo_face')
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	state_manager.init_item('face_detector_size', '640x640')
 	state_manager.init_item('face_detector_margin', (0, 0, 0, 0))
 	face_detector.pre_check()
