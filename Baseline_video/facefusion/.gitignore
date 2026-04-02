@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+.assets/
+.venv_facefusion/
+.venv_ff/
+output/
+report/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.jobs/
+=======
 __pycache__
 .assets
 .claude
@@ -5,3 +17,4 @@ __pycache__
 .idea
 .jobs
 .vscode
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a

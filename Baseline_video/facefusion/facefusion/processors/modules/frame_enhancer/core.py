@@ -56,7 +56,11 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 			'__metadata__':
 			{
 				'vendor': 'Helaman',
+<<<<<<< HEAD
+				'license': 'Non-Commercial',
+=======
 				'license': 'CC-BY-4.0',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 				'year': 2023
 			},
 			'hashes':
@@ -83,7 +87,11 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 			'__metadata__':
 			{
 				'vendor': 'Phhofm',
+<<<<<<< HEAD
+				'license': 'Non-Commercial',
+=======
 				'license': 'CC-BY-4.0',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 				'year': 2023
 			},
 			'hashes':
@@ -299,7 +307,11 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 			'__metadata__':
 			{
 				'vendor': 'Helaman',
+<<<<<<< HEAD
+				'license': 'Non-Commercial',
+=======
 				'license': 'CC-BY-4.0',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 				'year': 2024
 			},
 			'hashes':

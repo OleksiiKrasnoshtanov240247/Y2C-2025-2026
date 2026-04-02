@@ -15,7 +15,11 @@ def before_all() -> None:
 		'https://github.com/facefusion/facefusion-assets/releases/download/examples-3.0.0/source.jpg',
 		'https://github.com/facefusion/facefusion-assets/releases/download/examples-3.0.0/target-240p.mp4'
 	])
+<<<<<<< HEAD
+	subprocess.run(['ffmpeg', '-i', get_test_example_file('target-240p.mp4'), '-vframes', '1', get_test_example_file('target-240p.jpg')])
+=======
 	subprocess.run([ 'ffmpeg', '-i', get_test_example_file('target-240p.mp4'), '-vframes', '1', get_test_example_file('target-240p.jpg') ])
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 @pytest.fixture(scope = 'function', autouse = True)

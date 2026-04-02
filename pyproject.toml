@@ -3,7 +3,11 @@ name = "pipeline"
 version = "0.1.0"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+<<<<<<< HEAD
+    "torch",
+=======
     "torch>=2.4.0",
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     "torchvision",
     "torchaudio",
     "opencv-python",
@@ -17,7 +21,10 @@ dependencies = [
     "soundfile",
     "scipy",
     "pydub",
+<<<<<<< HEAD
+=======
     "pyyaml",              # MuseTalk inference config — 3_generate_video.py
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     "jiwer",
     "lpips",
     "pytorch-fid",
@@ -26,7 +33,15 @@ dependencies = [
     "diffusers>=0.30.2",
     "mmpose",
     "mmengine",
+<<<<<<< HEAD
+    # mmcv (full, with CUDA ops) has no Windows wheels at all.
+    # mmcv-lite is the pure-Python variant that installs fine on Windows.
+    # For mmpose inference this is sufficient; only exotic ops like
+    # deformable convolution require the full build.
+    "mmcv-lite<2.2.0",
+=======
     "mmcv-lite>=2.1.0",    # Pure-python build; MuseTalk workers need mmcv==2.1.0 --no-build-isolation (see setup_workers.py)
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     "mmdet",
     "accelerate",
     "seaborn",
@@ -45,6 +60,10 @@ dependencies = [
     "onnxruntime-gpu==1.20.1",
     "nvidia-cublas-cu12",
     "nvidia-cudnn-cu12",
+<<<<<<< HEAD
+    "nvidia-cufft-cu12",
+=======
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     "ml-dtypes==0.4.0",
     "mediapipe==0.10.14",
     "pingouin",
@@ -64,8 +83,13 @@ dependencies = [
     "cv2_enumerate_cameras",
     "opennsfw2",
     "protobuf",
+<<<<<<< HEAD
+    "pygrabber",
+    "customtkinter",
+=======
     "customtkinter",
     # "pygrabber" — REMOVED: Windows DirectShow wrapper, not installable on Linux
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 ]
 
 [build-system]
@@ -78,6 +102,20 @@ packages = ["src/pipeline"]
 [tool.hatch.metadata]
 allow-direct-references = true
 
+<<<<<<< HEAD
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/nightly/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
+torchaudio = { index = "pytorch-cu126" }
+
+[tool.uv.extra-build-dependencies]
+chumpy = ["pip"]
+=======
 # CUDA 12.4 PyTorch wheels — RTX 6000 Ada / L40S compatible
 [[tool.uv.index]]
 name = "pytorch-cu124"
@@ -91,8 +129,13 @@ torchaudio  = { index = "pytorch-cu124" }
 
 [tool.uv.extra-build-dependencies]
 chumpy      = ["pip"]
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 xtcocotools = ["numpy"]
 
 [tool.uv]
 prerelease = "allow"
+<<<<<<< HEAD
+environments = ["sys_platform == 'win32'"]
+=======
 required-environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a

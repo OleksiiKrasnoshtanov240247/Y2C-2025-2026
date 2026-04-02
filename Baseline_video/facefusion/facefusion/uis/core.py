@@ -1,5 +1,8 @@
 import importlib
+<<<<<<< HEAD
+=======
 import logging
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 import os
 import warnings
 from types import ModuleType
@@ -73,7 +76,10 @@ def init() -> None:
 	os.environ['GRADIO_ANALYTICS_ENABLED'] = '0'
 	os.environ['GRADIO_TEMP_DIR'] = os.path.join(state_manager.get_item('temp_path'), 'gradio')
 
+<<<<<<< HEAD
+=======
 	logging.getLogger('asyncio').setLevel(logging.CRITICAL)
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	warnings.filterwarnings('ignore', category = UserWarning, module = 'gradio')
 	gradio.processing_utils._check_allowed = uis_overrides.mock
 	gradio.processing_utils.convert_video_to_playable_mp4 = uis_overrides.convert_video_to_playable_mp4

@@ -1,10 +1,21 @@
+<<<<<<< HEAD
+=======
 import os
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 import shutil
 import subprocess
 import xml.etree.ElementTree as ElementTree
 from functools import lru_cache
 from typing import List, Optional
 
+<<<<<<< HEAD
+from onnxruntime import get_available_providers, set_default_logger_severity
+
+import facefusion.choices
+from facefusion.types import ExecutionDevice, ExecutionProvider, InferenceSessionProvider, ValueAndUnit
+
+set_default_logger_severity(3)
+=======
 import onnxruntime
 
 import facefusion.choices
@@ -12,6 +23,7 @@ from facefusion.filesystem import create_directory, is_directory
 from facefusion.types import ExecutionDevice, ExecutionProvider, InferenceOptionSet, InferenceProvider, ValueAndUnit
 
 onnxruntime.set_default_logger_severity(3)
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 def has_execution_provider(execution_provider : ExecutionProvider) -> bool:
@@ -19,7 +31,11 @@ def has_execution_provider(execution_provider : ExecutionProvider) -> bool:
 
 
 def get_available_execution_providers() -> List[ExecutionProvider]:
+<<<<<<< HEAD
+	inference_session_providers = get_available_providers()
+=======
 	inference_session_providers = onnxruntime.get_available_providers()
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	available_execution_providers : List[ExecutionProvider] = []
 
 	for execution_provider, execution_provider_value in facefusion.choices.execution_provider_set.items():
@@ -30,6 +46,14 @@ def get_available_execution_providers() -> List[ExecutionProvider]:
 	return available_execution_providers
 
 
+<<<<<<< HEAD
+def create_inference_session_providers(execution_device_id : int, execution_providers : List[ExecutionProvider]) -> List[InferenceSessionProvider]:
+	inference_session_providers : List[InferenceSessionProvider] = []
+
+	for execution_provider in execution_providers:
+		if execution_provider == 'cuda':
+			inference_session_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+=======
 def create_inference_providers(execution_device_id : int, execution_providers : List[ExecutionProvider]) -> List[InferenceProvider]:
 	inference_providers : List[InferenceProvider] = []
 	cache_path = resolve_cache_path()
@@ -37,10 +61,36 @@ def create_inference_providers(execution_device_id : int, execution_providers : 
 	for execution_provider in execution_providers:
 		if execution_provider == 'cuda':
 			inference_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			{
 				'device_id': execution_device_id,
 				'cudnn_conv_algo_search': resolve_cudnn_conv_algo_search()
 			}))
+<<<<<<< HEAD
+		if execution_provider == 'tensorrt':
+			inference_session_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+			{
+				'device_id': execution_device_id,
+				'trt_engine_cache_enable': True,
+				'trt_engine_cache_path': '.caches',
+				'trt_timing_cache_enable': True,
+				'trt_timing_cache_path': '.caches',
+				'trt_builder_optimization_level': 5
+			}))
+		if execution_provider in [ 'directml', 'rocm' ]:
+			inference_session_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+			{
+				'device_id': execution_device_id
+			}))
+		if execution_provider == 'migraphx':
+			inference_session_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+			{
+				'device_id': execution_device_id,
+				'migraphx_model_cache_dir': '.caches'
+			}))
+		if execution_provider == 'openvino':
+			inference_session_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+=======
 
 		if execution_provider == 'tensorrt':
 			inference_option_set : InferenceOptionSet =\
@@ -90,10 +140,24 @@ def create_inference_providers(execution_device_id : int, execution_providers : 
 
 		if execution_provider == 'openvino':
 			inference_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			{
 				'device_type': resolve_openvino_device_type(execution_device_id),
 				'precision': 'FP32'
 			}))
+<<<<<<< HEAD
+		if execution_provider == 'coreml':
+			inference_session_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
+			{
+				'SpecializationStrategy': 'FastPrediction',
+				'ModelCacheDirectory': '.caches'
+			}))
+
+	if 'cpu' in execution_providers:
+		inference_session_providers.append(facefusion.choices.execution_provider_set.get('cpu'))
+
+	return inference_session_providers
+=======
 
 		if execution_provider == 'qnn':
 			inference_providers.append((facefusion.choices.execution_provider_set.get(execution_provider),
@@ -110,6 +174,7 @@ def create_inference_providers(execution_device_id : int, execution_providers : 
 
 def resolve_cache_path() -> str:
 	return os.path.join('.caches', onnxruntime.get_version_string())
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 def resolve_cudnn_conv_algo_search() -> str:

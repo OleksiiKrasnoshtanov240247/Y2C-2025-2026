@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+from typing import List, Sequence
+=======
 from typing import List, Sequence, get_args
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 from facefusion.common_helper import create_int_range
 from facefusion.processors.modules.frame_colorizer.types import FrameColorizerModel
 
+<<<<<<< HEAD
+frame_colorizer_models : List[FrameColorizerModel] = [ 'ddcolor', 'ddcolor_artistic', 'deoldify', 'deoldify_artistic', 'deoldify_stable' ]
+=======
 frame_colorizer_models : List[FrameColorizerModel] = list(get_args(FrameColorizerModel))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 frame_colorizer_sizes : List[str] = [ '192x192', '256x256', '384x384', '512x512' ]
 

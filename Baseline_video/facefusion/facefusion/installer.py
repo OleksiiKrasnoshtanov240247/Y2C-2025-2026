@@ -19,6 +19,18 @@ LOCALES =\
 }
 ONNXRUNTIME_SET =\
 {
+<<<<<<< HEAD
+	'default': ('onnxruntime', '1.23.2')
+}
+if is_windows() or is_linux():
+	ONNXRUNTIME_SET['cuda'] = ('onnxruntime-gpu', '1.23.2')
+	ONNXRUNTIME_SET['openvino'] = ('onnxruntime-openvino', '1.23.0')
+if is_windows():
+	ONNXRUNTIME_SET['directml'] = ('onnxruntime-directml', '1.23.0')
+if is_linux():
+	ONNXRUNTIME_SET['migraphx'] = ('onnxruntime-migraphx', '1.23.0')
+	ONNXRUNTIME_SET['rocm'] = ('onnxruntime_rocm', '1.22.1', '7.0.2') #type:ignore[assignment]
+=======
 	'default': ('onnxruntime', '1.24.1')
 }
 if is_windows() or is_linux():
@@ -30,6 +42,7 @@ if is_windows():
 if is_linux():
 	ONNXRUNTIME_SET['migraphx'] = ('onnxruntime-migraphx', '1.24.2')
 	ONNXRUNTIME_SET['rocm'] = ('onnxruntime-rocm', '1.22.2.post1')
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 def cli() -> None:
@@ -49,16 +62,26 @@ def signal_exit(signum : int, frame : FrameType) -> None:
 def run(program : ArgumentParser) -> None:
 	args = program.parse_args()
 	has_conda = 'CONDA_PREFIX' in os.environ
+<<<<<<< HEAD
+	commands = [ shutil.which('pip'), 'install' ]
+
+	if args.force_reinstall:
+		commands.append('--force-reinstall')
+=======
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 	if not args.skip_conda and not has_conda:
 		sys.stdout.write(LOCALES.get('conda_not_activated') + os.linesep)
 		sys.exit(1)
 
+<<<<<<< HEAD
+=======
 	commands = [ shutil.which('pip'), 'install' ]
 
 	if args.force_reinstall:
 		commands.append('--force-reinstall')
 
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	with open('requirements.txt') as file:
 
 		for line in file.readlines():
@@ -66,9 +89,55 @@ def run(program : ArgumentParser) -> None:
 			if not __line__.startswith('onnxruntime'):
 				commands.append(__line__)
 
+<<<<<<< HEAD
+	if args.onnxruntime == 'rocm':
+		onnxruntime_name, onnxruntime_version, rocm_version = ONNXRUNTIME_SET.get(args.onnxruntime) #type:ignore[misc]
+		python_id = 'cp' + str(sys.version_info.major) + str(sys.version_info.minor)
+
+		if python_id in [ 'cp310', 'cp312' ]:
+			wheel_name = onnxruntime_name + '-' + onnxruntime_version + '-' + python_id + '-' + python_id + '-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl'
+			wheel_url = 'https://repo.radeon.com/rocm/manylinux/rocm-rel-' + rocm_version + '/' + wheel_name
+			commands.append(wheel_url)
+	else:
+		onnxruntime_name, onnxruntime_version = ONNXRUNTIME_SET.get(args.onnxruntime)
+		commands.append(onnxruntime_name + '==' + onnxruntime_version)
+
+	subprocess.call(commands)
+
+	if args.onnxruntime == 'cuda' and has_conda:
+		library_paths = []
+
+		if is_linux():
+			if os.getenv('LD_LIBRARY_PATH'):
+				library_paths = os.getenv('LD_LIBRARY_PATH').split(os.pathsep)
+
+			python_id = 'python' + str(sys.version_info.major) + '.' + str(sys.version_info.minor)
+			library_paths.extend(
+			[
+				os.path.join(os.getenv('CONDA_PREFIX'), 'lib'),
+				os.path.join(os.getenv('CONDA_PREFIX'), 'lib', python_id, 'site-packages', 'tensorrt_libs')
+			])
+			library_paths = list(dict.fromkeys([ library_path for library_path in library_paths if os.path.exists(library_path) ]))
+
+			subprocess.call([ shutil.which('conda'), 'env', 'config', 'vars', 'set', 'LD_LIBRARY_PATH=' + os.pathsep.join(library_paths) ])
+
+		if is_windows():
+			if os.getenv('PATH'):
+				library_paths = os.getenv('PATH').split(os.pathsep)
+
+			library_paths.extend(
+			[
+				os.path.join(os.getenv('CONDA_PREFIX'), 'Lib'),
+				os.path.join(os.getenv('CONDA_PREFIX'), 'Lib', 'site-packages', 'tensorrt_libs')
+			])
+			library_paths = list(dict.fromkeys([ library_path for library_path in library_paths if os.path.exists(library_path) ]))
+
+			subprocess.call([ shutil.which('conda'), 'env', 'config', 'vars', 'set', 'PATH=' + os.pathsep.join(library_paths) ])
+=======
 	onnxruntime_name, onnxruntime_version = ONNXRUNTIME_SET.get(args.onnxruntime)
 	commands.append(onnxruntime_name + '==' + onnxruntime_version)
 
 	subprocess.call([ shutil.which('pip'), 'uninstall', 'onnxruntime', onnxruntime_name, '-y', '-q' ])
 
 	subprocess.call(commands)
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a

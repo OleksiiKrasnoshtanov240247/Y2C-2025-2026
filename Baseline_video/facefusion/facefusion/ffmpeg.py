@@ -114,7 +114,10 @@ def extract_frames(target_path : str, temp_video_resolution : Resolution, temp_v
 		ffmpeg_builder.set_input(target_path),
 		ffmpeg_builder.set_media_resolution(pack_resolution(temp_video_resolution)),
 		ffmpeg_builder.set_frame_quality(0),
+<<<<<<< HEAD
+=======
 		ffmpeg_builder.enforce_pixel_format('rgb24'),
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 		ffmpeg_builder.select_frame_range(trim_frame_start, trim_frame_end, temp_video_fps),
 		ffmpeg_builder.prevent_frame_drop(),
 		ffmpeg_builder.set_output(temp_frames_pattern)
@@ -244,8 +247,12 @@ def merge_video(target_path : str, temp_video_fps : Fps, output_video_resolution
 
 
 def concat_video(output_path : str, temp_output_paths : List[str]) -> bool:
+<<<<<<< HEAD
+	concat_video_path = tempfile.mktemp()
+=======
 	file_descriptor, concat_video_path = tempfile.mkstemp()
 	os.close(file_descriptor)
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 	with open(concat_video_path, 'w') as concat_video_file:
 		for temp_output_path in temp_output_paths:

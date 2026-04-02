@@ -11,8 +11,12 @@ Usage:
         --output assets/output/clip_001.wav \
         --model Applio/logs/DonaldTrump/DonaldTrump.pth \
         --index Applio/logs/DonaldTrump/added_IVF256_Flat_nprobe_1_DonaldTrump_v2.index \
+<<<<<<< HEAD
+        --read-chunk-size 192
+=======
         --read-chunk-size 192 \
         --precision fp32
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 Chunk length conditions (from proposal Table 1):
     C1: --read-chunk-size 24   ->  ~64 ms
@@ -20,6 +24,8 @@ Chunk length conditions (from proposal Table 1):
     C3: --read-chunk-size 192  -> ~512 ms  (default / baseline)
     C4: --read-chunk-size 384  -> ~1024 ms
     C5: --read-chunk-size 768  -> ~2048 ms
+<<<<<<< HEAD
+=======
 
 Precision conditions:
     fp32: float32 on CUDA (default, baseline)
@@ -27,6 +33,7 @@ Precision conditions:
     int8: dynamic quantization on CPU (torch.quantization.quantize_dynamic)
           Note: PyTorch int8 dynamic quantization requires CPU.
           Models are moved to CPU for this condition.
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 """
 
 import argparse
@@ -49,6 +56,8 @@ APPLIO_IO_SR = 48_000   # Applio's audio I/O sample rate
 INTERNAL_SR = 16_000     # Applio's internal processing sample rate
 
 
+<<<<<<< HEAD
+=======
 def apply_precision(vc, precision: str) -> None:
     """
     Cast the loaded RVC models to the requested numeric precision.
@@ -91,6 +100,7 @@ def apply_precision(vc, precision: str) -> None:
     raise ValueError(f"Unknown precision '{precision}'. Use fp32, fp16, or int8.")
 
 
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 def infer_with_timing(
     source_path: str,
     output_path: str,
@@ -102,7 +112,10 @@ def infer_with_timing(
     index_rate: float = 0.75,
     embedder_model: str = "contentvec",
     target_speaker: str | None = None,
+<<<<<<< HEAD
+=======
     precision: str = "fp32",
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 ) -> dict:
     """Run RVC inference with fixed-length chunking and per-chunk timing.
 
@@ -118,7 +131,10 @@ def infer_with_timing(
         index_rate: Speaker embedding retrieval blend rate.
         embedder_model: Feature extractor model name.
         target_speaker: Label for the target speaker (metadata only).
+<<<<<<< HEAD
+=======
         precision: fp32 (default), fp16, or int8.
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
     Returns:
         Dict with performance statistics.
@@ -126,7 +142,11 @@ def infer_with_timing(
     import torch
     from rvc.infer.infer import VoiceConverter
     from rvc.lib.utils import load_audio_infer
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     # Resolve absolute paths BEFORE any working directory changes
     source_path = os.path.abspath(source_path)
     output_path = os.path.abspath(output_path)
@@ -140,20 +160,30 @@ def infer_with_timing(
 
     print(f"  Chunk config  : read_chunk_size={read_chunk_size}, "
           f"block_frame={block_frame_48k} samples, ~{block_frame_ms:.0f} ms")
+<<<<<<< HEAD
+=======
     print(f"  Precision     : {precision}")
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
     # Save current working directory so we can restore it
     original_cwd = os.getcwd()
 
+<<<<<<< HEAD
+=======
     # Determine if we are running on CUDA after precision is applied.
     # int8 forces CPU; fp32/fp16 use whatever device Applio's config selects.
     using_cuda = (precision != "int8") and torch.cuda.is_available()
 
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     try:
         # Applio expects to be run from its own directory (for config JSON loading)
         os.chdir(APPLIO_DIR)
 
+<<<<<<< HEAD
+        # Initialize voice converter and load model
+=======
         # Initialize voice converter and load model at default fp32 on device
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
         vc = VoiceConverter()
         vc.get_vc(model_path, 0)
 
@@ -161,9 +191,12 @@ def infer_with_timing(
             vc.load_hubert(embedder_model)
             vc.last_embedder_model = embedder_model
 
+<<<<<<< HEAD
+=======
         # Apply precision AFTER Applio has finished loading (which always uses fp32)
         apply_precision(vc, precision)
 
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
         # Load audio at 16kHz (Applio's internal processing rate)
         audio = load_audio_infer(source_path, INTERNAL_SR)
         audio_max = np.abs(audio).max() / 0.95
@@ -190,8 +223,13 @@ def infer_with_timing(
               f"({num_samples / INTERNAL_SR:.2f}s)")
         print(f"  Chunks        : {len(chunks)} x {block_frame_16k} samples")
 
+<<<<<<< HEAD
+        # Reset GPU memory stats
+        if torch.cuda.is_available():
+=======
         # Reset GPU memory stats only when actually using CUDA
         if using_cuda:
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
             torch.cuda.reset_peak_memory_stats()
 
         # Process each chunk with timing
@@ -199,13 +237,39 @@ def infer_with_timing(
         converted_chunks: list[np.ndarray] = []
 
         for i, chunk in enumerate(chunks):
+<<<<<<< HEAD
+            if torch.cuda.is_available():
+=======
             # Synchronize before timing only when on CUDA —
             # otherwise the timer just measures CPU dispatch, not compute.
             if using_cuda:
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
                 torch.cuda.synchronize()
 
             t0 = time.perf_counter()
 
+<<<<<<< HEAD
+            audio_opt = vc.vc.pipeline(
+                model=vc.hubert_model,
+                net_g=vc.net_g,
+                sid=0,
+                audio=chunk,
+                pitch=pitch,
+                f0_method=f0_method,
+                file_index=file_index,
+                index_rate=index_rate,
+                pitch_guidance=vc.use_f0,
+                volume_envelope=1.0,
+                version=vc.version,
+                protect=0.5,
+                f0_autotune=False,
+                f0_autotune_strength=1.0,
+                proposed_pitch=False,
+                proposed_pitch_threshold=155.0,
+            )
+
+            if torch.cuda.is_available():
+=======
             # autocast handles dtype promotion for all ops in the call tree.
             # For fp16 on CUDA: pipeline.py hard-codes feats.float() before
             # calling net_g.infer() — autocast overrides that and keeps
@@ -234,6 +298,7 @@ def infer_with_timing(
                 )
 
             if using_cuda:
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
                 torch.cuda.synchronize()
 
             t1 = time.perf_counter()
@@ -252,9 +317,15 @@ def infer_with_timing(
         if audio_max > 1:
             output_audio /= audio_max
 
+<<<<<<< HEAD
+        # Peak GPU memory
+        peak_gpu_mb = None
+        if torch.cuda.is_available():
+=======
         # Peak GPU memory — only meaningful for CUDA runs
         peak_gpu_mb = None
         if using_cuda:
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
             peak_gpu_mb = torch.cuda.max_memory_allocated() / (1024 ** 2)
 
     finally:
@@ -268,8 +339,11 @@ def infer_with_timing(
     latencies = np.array(chunk_latencies_ms)
     perf_stats = {
         "num_chunks": len(chunks),
+<<<<<<< HEAD
+=======
         "precision": precision,
         "device": "cpu" if precision == "int8" else str(vc.config.device),
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
         "chunk_latencies_ms": [round(v, 3) for v in chunk_latencies_ms],
         "mean_chunk_latency_ms": round(float(latencies.mean()), 3),
         "min_chunk_latency_ms": round(float(latencies.min()), 3),
@@ -309,11 +383,14 @@ Chunk length conditions (proposal Table 1):
   C3:  --read-chunk-size 192  ->  ~512 ms  (default / baseline)
   C4:  --read-chunk-size 384  -> ~1024 ms  (long)
   C5:  --read-chunk-size 768  -> ~2048 ms  (very long)
+<<<<<<< HEAD
+=======
 
 Precision conditions:
   fp32  float32 on CUDA (default, baseline)
   fp16  half-precision on CUDA (faster, less VRAM)
   int8  dynamic quantization on CPU (torch.quantization.quantize_dynamic)
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
         """,
     )
 
@@ -343,11 +420,14 @@ Precision conditions:
         "--target-speaker", type=str, default=None, dest="target_speaker",
         help="Target speaker label (metadata only, written to perf.json)",
     )
+<<<<<<< HEAD
+=======
     parser.add_argument(
         "--precision", type=str, default="fp32",
         choices=["fp32", "fp16", "int8"],
         help="Model precision: fp32 (default), fp16 (CUDA half), int8 (CPU dynamic quant)",
     )
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
     args = parser.parse_args()
 
@@ -377,9 +457,16 @@ Precision conditions:
         index_rate=args.index_rate,
         embedder_model=args.embedder_model,
         target_speaker=args.target_speaker,
+<<<<<<< HEAD
+=======
         precision=args.precision,
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
     )
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     main()
+=======
+    main()
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a

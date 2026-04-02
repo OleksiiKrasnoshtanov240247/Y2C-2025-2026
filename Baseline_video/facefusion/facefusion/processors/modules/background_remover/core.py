@@ -8,7 +8,11 @@ import numpy
 import facefusion.jobs.job_manager
 import facefusion.jobs.job_store
 from facefusion import config, content_analyser, inference_manager, logger, state_manager, translator, video_manager
+<<<<<<< HEAD
+from facefusion.common_helper import is_macos
+=======
 from facefusion.common_helper import is_macos, is_windows
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 from facefusion.download import conditional_download_hashes, conditional_download_sources, resolve_download_url
 from facefusion.execution import has_execution_provider
 from facefusion.filesystem import in_directory, is_image, is_video, resolve_relative_path, same_file_extension
@@ -51,7 +55,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/ben_2.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'ben',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (1024, 1024),
 			'mean': [ 0.0, 0.0, 0.0 ],
 			'standard_deviation': [ 1.0, 1.0, 1.0 ]
@@ -80,7 +87,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/birefnet_general.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'birefnet',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (1024, 1024),
 			'mean': [ 0.0, 0.0, 0.0 ],
 			'standard_deviation': [ 1.0, 1.0, 1.0 ]
@@ -109,11 +119,16 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/birefnet_portrait.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'birefnet',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (1024, 1024),
 			'mean': [ 0.0, 0.0, 0.0 ],
 			'standard_deviation': [ 1.0, 1.0, 1.0 ]
 		},
+<<<<<<< HEAD
+=======
 		'corridor_key_1024':
 		{
 			'__metadata__':
@@ -172,6 +187,7 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 			'mean': [ 0.485, 0.456, 0.406 ],
 			'standard_deviation': [ 0.229, 0.224, 0.225 ]
 		},
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 		'isnet_general':
 		{
 			'__metadata__':
@@ -196,7 +212,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/isnet_general.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'isnet',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (1024, 1024),
 			'mean': [ 0.5, 0.5, 0.5 ],
 			'standard_deviation': [ 1.0, 1.0, 1.0 ]
@@ -225,7 +244,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/modnet.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'modnet',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (512, 512),
 			'mean': [ 0.5, 0.5, 0.5 ],
 			'standard_deviation': [ 0.5, 0.5, 0.5 ]
@@ -254,7 +276,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/ormbg.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'ormbg',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (1024, 1024),
 			'mean': [ 0.0, 0.0, 0.0 ],
 			'standard_deviation': [ 1.0, 1.0, 1.0 ]
@@ -283,7 +308,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/rmbg_1.4.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'rmbg',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (1024, 1024),
 			'mean': [ 0.5, 0.5, 0.5 ],
 			'standard_deviation': [ 1.0, 1.0, 1.0 ]
@@ -312,7 +340,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/rmbg_2.0.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'rmbg',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (1024, 1024),
 			'mean': [ 0.485, 0.456, 0.406 ],
 			'standard_deviation': [ 0.229, 0.224, 0.225 ]
@@ -341,7 +372,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/silueta.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'silueta',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (320, 320),
 			'mean': [ 0.485, 0.456, 0.406 ],
 			'standard_deviation': [ 0.229, 0.224, 0.225 ]
@@ -370,7 +404,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/u2net_cloth.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'u2net_cloth',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (768, 768),
 			'mean': [ 0.485, 0.456, 0.406 ],
 			'standard_deviation': [ 0.229, 0.224, 0.225 ]
@@ -399,7 +436,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/u2net_general.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'u2net',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (320, 320),
 			'mean': [ 0.485, 0.456, 0.406 ],
 			'standard_deviation': [ 0.229, 0.224, 0.225 ]
@@ -428,7 +468,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/u2net_human.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'u2net',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (320, 320),
 			'mean': [ 0.485, 0.456, 0.406 ],
 			'standard_deviation': [ 0.229, 0.224, 0.225 ]
@@ -457,7 +500,10 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 					'path': resolve_relative_path('../.assets/models/u2netp.onnx')
 				}
 			},
+<<<<<<< HEAD
+=======
 			'type': 'u2netp',
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			'size': (320, 320),
 			'mean': [ 0.485, 0.456, 0.406 ],
 			'standard_deviation': [ 0.229, 0.224, 0.225 ]
@@ -478,9 +524,13 @@ def clear_inference_pool() -> None:
 
 
 def resolve_execution_providers() -> List[ExecutionProvider]:
+<<<<<<< HEAD
+	if is_macos() and has_execution_provider('coreml'):
+=======
 	model_type = get_model_options().get('type')
 
 	if is_macos() and has_execution_provider('coreml') or is_windows() and has_execution_provider('directml') and model_type == 'corridor_key':
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 		return [ 'cpu' ]
 	return state_manager.get_item('execution_providers')
 
@@ -493,16 +543,26 @@ def get_model_options() -> ModelOptions:
 def register_args(program : ArgumentParser) -> None:
 	group_processors = find_argument_group(program, 'processors')
 	if group_processors:
+<<<<<<< HEAD
+		group_processors.add_argument('--background-remover-model', help = translator.get('help.model', __package__), default = config.get_str_value('processors', 'background_remover_model', 'rmbg_2.0'), choices = background_remover_choices.background_remover_models)
+		group_processors.add_argument('--background-remover-color', help = translator.get('help.color', __package__), type = partial(sanitize_int_range, int_range = background_remover_choices.background_remover_color_range), default = config.get_int_list('processors', 'background_remover_color', '0 0 0 0'), nargs = '+')
+		facefusion.jobs.job_store.register_step_keys([ 'background_remover_model', 'background_remover_color' ])
+=======
 		group_processors.add_argument('--background-remover-model', help = translator.get('help.model', __package__), default = config.get_str_value('processors', 'background_remover_model', 'modnet'), choices = background_remover_choices.background_remover_models)
 		group_processors.add_argument('--background-remover-fill-color', help = translator.get('help.fill_color', __package__), type = partial(sanitize_int_range, int_range = background_remover_choices.background_remover_color_range), default = config.get_int_list('processors', 'background_remover_fill_color', '0 0 0 0'), nargs = '+')
 		group_processors.add_argument('--background-remover-despill-color', help = translator.get('help.despill_color', __package__), type = partial(sanitize_int_range, int_range = background_remover_choices.background_remover_color_range), default = config.get_int_list('processors', 'background_remover_despill_color', '0 0 0 0'), nargs = '+')
 		facefusion.jobs.job_store.register_step_keys([ 'background_remover_model', 'background_remover_fill_color', 'background_remover_despill_color' ])
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 def apply_args(args : Args, apply_state_item : ApplyStateItem) -> None:
 	apply_state_item('background_remover_model', args.get('background_remover_model'))
+<<<<<<< HEAD
+	apply_state_item('background_remover_color', normalize_color(args.get('background_remover_color')))
+=======
 	apply_state_item('background_remover_fill_color', normalize_color(args.get('background_remover_fill_color')))
 	apply_state_item('background_remover_despill_color', normalize_color(args.get('background_remover_despill_color')))
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 def pre_check() -> bool:
@@ -536,6 +596,13 @@ def post_process() -> None:
 
 
 def remove_background(temp_vision_frame : VisionFrame) -> Tuple[VisionFrame, Mask]:
+<<<<<<< HEAD
+	temp_vision_mask = forward(prepare_temp_frame(temp_vision_frame))
+	temp_vision_mask = normalize_vision_mask(temp_vision_mask)
+	temp_vision_mask = cv2.resize(temp_vision_mask, temp_vision_frame.shape[:2][::-1])
+	temp_vision_frame = apply_background_color(temp_vision_frame, temp_vision_mask)
+	return temp_vision_frame, temp_vision_mask
+=======
 	model_type = get_model_options().get('type')
 
 	if model_type == 'corridor_key':
@@ -551,11 +618,16 @@ def remove_background(temp_vision_frame : VisionFrame) -> Tuple[VisionFrame, Mas
 	temp_vision_frame = apply_despill_color(temp_vision_frame)
 	temp_vision_frame = apply_fill_color(temp_vision_frame, remove_vision_mask)
 	return temp_vision_frame, remove_vision_mask
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 
 def forward(temp_vision_frame : VisionFrame) -> VisionFrame:
 	background_remover = get_inference_pool().get('background_remover')
+<<<<<<< HEAD
+	model_name = state_manager.get_item('background_remover_model')
+=======
 	model_type = get_model_options().get('type')
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 
 	with thread_semaphore():
 		remove_vision_frame = background_remover.run(None,
@@ -563,12 +635,19 @@ def forward(temp_vision_frame : VisionFrame) -> VisionFrame:
 			'input': temp_vision_frame
 		})[0]
 
+<<<<<<< HEAD
+		if model_name == 'u2net_cloth':
+=======
 		if model_type == 'u2net_cloth':
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 			remove_vision_frame = numpy.argmax(remove_vision_frame, axis = 1)
 
 	return remove_vision_frame
 
 
+<<<<<<< HEAD
+def prepare_temp_frame(temp_vision_frame : VisionFrame) -> VisionFrame:
+=======
 def forward_corridor_key(temp_vision_frame : VisionFrame) -> Tuple[Mask, VisionFrame]:
 	background_remover = get_inference_pool().get('background_remover')
 
@@ -583,10 +662,16 @@ def forward_corridor_key(temp_vision_frame : VisionFrame) -> Tuple[Mask, VisionF
 
 def prepare_temp_frame(temp_vision_frame : VisionFrame) -> VisionFrame:
 	model_type = get_model_options().get('type')
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	model_size = get_model_options().get('size')
 	model_mean = get_model_options().get('mean')
 	model_standard_deviation = get_model_options().get('standard_deviation')
 
+<<<<<<< HEAD
+	temp_vision_frame = cv2.resize(temp_vision_frame, model_size)
+	temp_vision_frame = temp_vision_frame[:, :, ::-1] / 255.0
+	temp_vision_frame = (temp_vision_frame - model_mean) / model_standard_deviation
+=======
 	if model_type == 'corridor_key':
 		coarse_color = temp_vision_frame[:, :, ::-1].astype(numpy.float32) / 255.0
 		coarse_bias = coarse_color[:, :, 1] - numpy.maximum(coarse_color[:, :, 0], coarse_color[:, :, 2])
@@ -599,6 +684,7 @@ def prepare_temp_frame(temp_vision_frame : VisionFrame) -> VisionFrame:
 	if model_type == 'corridor_key':
 		temp_vision_frame = numpy.concatenate([ temp_vision_frame, coarse_vision_mask ], axis = 2)
 
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	temp_vision_frame = temp_vision_frame.transpose(2, 0, 1)
 	temp_vision_frame = numpy.expand_dims(temp_vision_frame, axis = 0).astype(numpy.float32)
 	return temp_vision_frame
@@ -610,6 +696,18 @@ def normalize_vision_mask(temp_vision_mask : Mask) -> Mask:
 	return temp_vision_mask
 
 
+<<<<<<< HEAD
+def apply_background_color(temp_vision_frame : VisionFrame, temp_vision_mask : Mask) -> VisionFrame:
+	background_remover_color = state_manager.get_item('background_remover_color')
+	temp_vision_mask = temp_vision_mask.astype(numpy.float32) / 255
+	temp_vision_mask = numpy.expand_dims(temp_vision_mask, axis = 2)
+	temp_vision_mask = (1 - temp_vision_mask) * background_remover_color[-1] / 255
+	color_frame = numpy.zeros_like(temp_vision_frame)
+	color_frame[:, :, 0] = background_remover_color[2]
+	color_frame[:, :, 1] = background_remover_color[1]
+	color_frame[:, :, 2] = background_remover_color[0]
+	temp_vision_frame = temp_vision_frame * (1 - temp_vision_mask) + color_frame * temp_vision_mask
+=======
 def apply_fill_color(temp_vision_frame : VisionFrame, temp_vision_mask : Mask) -> VisionFrame:
 	background_remover_fill_color = state_manager.get_item('background_remover_fill_color')
 	temp_vision_mask = temp_vision_mask.astype(numpy.float32) / 255
@@ -636,6 +734,7 @@ def apply_despill_color(temp_vision_frame : VisionFrame) -> VisionFrame:
 	color_limit = numpy.roll(temp_vision_frame, 1, 2) + numpy.roll(temp_vision_frame, -1, 2)
 	limit_vision_frame = numpy.minimum(temp_vision_frame, color_limit * 0.5)
 	temp_vision_frame = temp_vision_frame + (limit_vision_frame - temp_vision_frame) * color_alpha * color_weight
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 	temp_vision_frame = temp_vision_frame.astype(numpy.uint8)
 	return temp_vision_frame
 
