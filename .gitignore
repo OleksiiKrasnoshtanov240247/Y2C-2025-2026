@@ -224,15 +224,9 @@ __marimo__/
 *.wav
 *.txt
 *.zip
-*.png
 *.safetensors
 *.mp4
 
-<<<<<<< HEAD
-=======
-Datalab tasks/checkpoints/
-
->>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
 assets/audios
 assets/datasets
 logs
@@ -244,9 +238,6 @@ venv
 audio/Applio/logs/DonaldTrump
 env/
 venv/
-<<<<<<< HEAD
-.venv/
-=======
 .venv/src/data/raw/*.rar
 src/data/
 *.rar
@@ -256,4 +247,3 @@ src/data/
 *.safetensors
 *.onnx
 *.csv
->>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
