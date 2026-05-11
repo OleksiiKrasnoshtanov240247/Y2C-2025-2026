@@ -3,6 +3,10 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+*.ckpt
+*.safetensors
+
+
 # C extensions
 *.so
 
@@ -205,3 +209,41 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+*.exe
+*.pt
+*.onnx
+*.pyc
+*.pth
+*.index
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.bin
+*.wav
+*.txt
+*.zip
+*.safetensors
+*.mp4
+
+assets/audios
+assets/datasets
+logs
+rvc/models
+env
+venv
+.venv
+
+audio/Applio/logs/DonaldTrump
+env/
+venv/
+.venv/src/data/raw/*.rar
+src/data/
+*.rar
+*.zip
+*.tar.gz
+*.ckpt
+*.safetensors
+*.onnx
+*.csv

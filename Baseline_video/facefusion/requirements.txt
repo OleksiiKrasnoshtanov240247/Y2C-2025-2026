@@ -1,0 +1,21 @@
+<<<<<<< HEAD
+colorama==0.4.6
+gradio==5.44.1
+gradio_rangeslider==0.0.8
+onnx==1.20.1
+onnxruntime-gpu==1.19.2
+opencv-python==4.13.0.92
+psutil==7.2.2
+scipy==1.17.0
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+=======
+gradio-rangeslider==0.0.8
+gradio==5.44.1
+numpy
+onnx==1.20.1
+onnxruntime==1.24.3
+opencv-python
+tqdm==4.67.3
+scipy
+>>>>>>> 66227f6a7a0189aec16363537239bf26c7d75a7a
